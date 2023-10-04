@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+body {
+	background-color: rgb(43, 43, 43);
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	margin:0;
+	padding: 0;
+}
+
+.wrap {
+	display: flow-root;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 300px;
+	transform: translate(-50%,-50%);
+	border-radius: 10px;
+}
+
+
+
+.wrap .loginTop {
+	text-align: center;
+	font-size: 60px;
+	font-weight: bold;
+	margin-bottom: 30px;
+	color: white;
+}
+
+.wrap .loginMid {
+	display: flow-root;
+}
+
+.wrap .loginMid input {
+	margin-bottom: 10px;
+}
+
+.wrap .loginBottom {
+	text-align: center;
+}
+
+.wrap .info {
+	text-align: center;
+}
+.wrap .info .red {
+	color: red;
+	font-size: 14px;
+}
+
+.wrap .loginBottom button {
+	margin-top: 20px;
+	width: 50%;
+}

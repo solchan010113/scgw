@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+
+	<resultMap type="com.java.vo.DepartmentVO" id="departmentMap">
+		<id property="id" column="DE_ID" />
+		<result property="name" column="DE_NAME" />
+	</resultMap>
+	
+	<resultMap type="com.java.vo.EmployeesVO" id="employeesMap">
+		<id property="no" column="EM_NO" />
+		<result property="name" column="EM_NAME" />
+		<result property="hp" column="EM_HP" />
+		<result property="address" column="EM_ADDRESS" />
+		<result property="hireDate" column="EM_HIRE_DATE" />
+		<result property="salary" column="EM_SALARY" />
+		<result property="id" column="EM_ID" />
+		<result property="pwd" column="EM_PASSWORD" />
+		<collection property="deVO" resultMap="departmentMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.java.vo.BoardVO" id="boardMap">
+		<id property="id" column="BO_ID" />
+		<result property="title" column="BO_TITLE" />
+		<result property="content" column="BO_CONTENT" />
+		<result property="regDate" column="BO_REG_DATE" />
+		<collection property="emVO" resultMap="employeesMap"></collection>
+	</resultMap>
+	
+		<insert id="boardInsert" parameterType="com.java.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO BOARD
+		VALUES(seq_bo_id.nextVal,#{title},#{content},#{emVO.no}, sysdate)
+		]]>
+		</insert>
+		
+		<select id="boardSelectList" resultMap="boardMap">
+		<![CDATA[
+		SELECT b.*, e.em_name
+		  FROM board b , employees e
+		 WHERE b.bo_em_id = e.em_no
+		]]>
+		</select>
+	
+		<select id="boardSelectOne" resultMap="boardMap" parameterType="int">
+		<![CDATA[
+		SELECT b.*, e.*, d.*
+		  FROM board b, employees e, department d	
+		 WHERE b.bo_em_id = e.em_no
+		   AND e.em_de_id = d.de_id
+		   AND b.bo_id = #{id}
+		]]>
+		</select>
+
+<!-- 	<select id="loginAction" resultMap="employeesMap" parameterType="com.java.vo.EmployeesVO">
+		<![CDATA[
+		SELECT *
+		  FROM employees
+		 WHERE em_id = #{id}
+		   AND em_password = #{pwd}
+		]]>
+	</select> -->
+
+
+	<!-- <select id="personSelectOne" parameterType="int" resultType="com.javaex.vo.PersonVo"> <![CDATA[ SELECT id, name, hp, company FROM person WHERE id = #{personId} ORDER BY id desc ]]> </select> <insert id="personInsert" parameterType="com.javaex.vo.PersonVo"> <![CDATA[ INSERT into person VALUES(seq_person_id.nextVal, #{name}, #{hp}, #{company}) ]]> </insert> <delete id="personDelete" parameterType="int"> <![CDATA[ DELETE FROM person WHERE id = #{personId} ]]> </delete> <update id="personUpdate" 
+		parameterType="com.javaex.vo.PersonVo"> <![CDATA[ UPDATE person SET name = #{name}, hp = #{hp}, company = #{company} WHERE id = #{id} ]]> </update> -->
+
+
+
+</mapper>
