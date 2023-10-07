@@ -9,23 +9,28 @@ public class EmployeesVO {
 	private String hp;
 	private String address;
 	private Date hireDate;
-	private int salary;
-	private DepartmentVO deVO;
+	private Date birth;
+	private TeamsVO teVO;
 	private String id;
 	private String pwd;
+	private String img;
+	private String position;
 	
 	public EmployeesVO() {}
-	public EmployeesVO(int no, String name, String hp, String address, Date hireDate, int salary, DepartmentVO deVO,
-			String id, String pwd) {
+
+	public EmployeesVO(int no, String name, String hp, String address, Date hireDate, TeamsVO teVO, String id,
+			String pwd, String img, String position, Date birth) {
 		this.no = no;
 		this.name = name;
 		this.hp = hp;
 		this.address = address;
 		this.hireDate = hireDate;
-		this.salary = salary;
-		this.deVO = deVO;
+		this.birth = birth;
+		this.teVO = teVO;
 		this.id = id;
 		this.pwd = pwd;
+		this.img = img;
+		this.position = position;
 	}
 
 	public int getNo() {
@@ -68,20 +73,12 @@ public class EmployeesVO {
 		this.hireDate = hireDate;
 	}
 
-	public int getSalary() {
-		return salary;
+	public TeamsVO getTeVO() {
+		return teVO;
 	}
 
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
-
-	public DepartmentVO getDeVO() {
-		return deVO;
-	}
-
-	public void setDeVO(DepartmentVO deVO) {
-		this.deVO = deVO;
+	public void setTeVO(TeamsVO teVO) {
+		this.teVO = teVO;
 	}
 
 	public String getId() {
@@ -100,10 +97,37 @@ public class EmployeesVO {
 		this.pwd = pwd;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	
+	public Date getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+
 	@Override
 	public String toString() {
 		return "EmployeesVO [no=" + no + ", name=" + name + ", hp=" + hp + ", address=" + address + ", hireDate="
-				+ hireDate + ", salary=" + salary + ", deVO=" + deVO + ", id=" + id + ", pwd=" + pwd + "]";
+				+ hireDate + ", teVO=" + teVO + ", id=" + id + ", pwd=" + pwd + ", img=" + img + ", position="
+				+ position + "birth=" + birth +"]";
 	}
+	
+	
 	
 }

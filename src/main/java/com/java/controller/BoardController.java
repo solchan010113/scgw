@@ -43,9 +43,7 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping("imageUpload")
 	public Map<String,Object> imageUpload(@RequestParam(value="upload") MultipartFile file, HttpServletRequest request) {
-		System.out.println("dfdfdfdfd");
 		System.out.println(file);
-		
 		return boardService.fileSave(file,request.getContextPath());
 	}
 	

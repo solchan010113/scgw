@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.content {
+	padding: 30px;
+}
+
+.content .tbTop {
+	text-align: center;
+	padding: 30px 0;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.content table tr td {
+	vertical-align: middle;
+	text-align: center;
+	padding: 0;
+}
+
+.content table tr td input{
+	width: 100%;
+	text-align: center;
+	padding: 0px;
+}
+
+.content table tr td select{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	text-align: center;
+}
+
+.content table tr:nth-child(1) td:nth-child(1) {
+	width: 10%;
+	position: relative;
+	padding-bottom: 10%;
+	vertical-align: middle;
+}
+
+.content table tr:nth-child(1) td:nth-child(2) {
+	width: 20%;
+	
+}
+.content table tr:nth-child(1) td:nth-child(3) {
+	width: 25%;
+}
+.content table tr:nth-child(1) td:nth-child(4) {
+	width: 20%;
+}
+.content table tr:nth-child(1) td:nth-child(5) {
+	width: 25%;
+}
+
+.content .imageUpload {
+	cursor: pointer;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.content .imageUpload span {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+}
+
+.content .imageUpload img {
+	width: 100%;
+	height: 100%;
+}

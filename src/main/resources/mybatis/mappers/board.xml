@@ -41,7 +41,7 @@
 		<![CDATA[
 		SELECT b.*, e.em_name
 		  FROM board b , employees e
-		 WHERE b.bo_em_id = e.em_no
+		 WHERE b.em_no = e.em_no
 		]]>
 		</select>
 	
@@ -49,8 +49,8 @@
 		<![CDATA[
 		SELECT b.*, e.*, d.*
 		  FROM board b, employees e, department d	
-		 WHERE b.bo_em_id = e.em_no
-		   AND e.em_de_id = d.de_id
+		 WHERE b.em_no = e.em_no
+		   AND e.de_id = d.de_id
 		   AND b.bo_id = #{id}
 		]]>
 		</select>

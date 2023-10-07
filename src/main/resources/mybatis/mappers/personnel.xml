@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="personnel">
+
+
+	<resultMap type="com.java.vo.DepartmentVO" id="departmentMap">
+		<id property="id" column="DE_ID" />
+		<result property="name" column="DE_NAME" />
+	</resultMap>
+	
+	<resultMap type="com.java.vo.TeamsVO" id="teamsMap">
+		<id property="id" column="TE_ID" />
+		<result property="name" column="TE_NAME" />
+		<collection property="deVO" resultMap="departmentMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.java.vo.EmployeesVO" id="employeesMap">
+		<id property="no" column="EM_NO" />
+		<result property="name" column="EM_NAME" />
+		<result property="hp" column="EM_HP" />
+		<result property="address" column="EM_ADDRESS" />
+		<result property="hireDate" column="EM_HIRE_DATE" />
+		<result property="birth" column="EM_BIRTH" />
+		<result property="id" column="EM_ID" />
+		<result property="pwd" column="EM_PASSWORD" />
+		<result property="img" column="EM_IMG" />
+		<result property="position" column="EM_POSITION" />
+		<collection property="teVO" resultMap="teamsMap"></collection>
+	</resultMap>
+	
+
+	<select id="departmentSelectList" resultMap="departmentMap">
+		<![CDATA[
+		SELECT *
+		  FROM department
+		]]>
+	</select>
+	
+	<select id="teamsSelectList" resultMap="teamsMap">
+		<![CDATA[
+		SELECT *
+		  FROM teams
+		]]>
+	</select>
+	
+	
+	
+	<select id="employeeSelectOne" resultMap="employeesMap" parameterType="int">
+		<![CDATA[
+		SELECT *
+		  FROM employees e, teams t, department d
+		 WHERE e.te_id = t.te_id
+		   AND t.de_id = d.de_id
+		   AND e.em_no = #{no}
+		]]>
+	</select>
+	
+	<select id="employeeSelectList" resultMap="employeesMap">
+		<![CDATA[
+		SELECT *
+		  FROM employees e, teams t, department d
+		 WHERE e.te_id = t.te_id
+		   AND t.de_id = d.de_id
+		]]>
+	</select>
+	
+	<insert id="insertEmployee" parameterType="com.java.vo.EmployeesVO">
+		<![CDATA[
+		INSERT INTO employees
+		VALUES (seq_em_id.nextVal,#{name},#{hp},#{address},#{hireDate},#{pwd},#{pwd},#{teVO.id},#{img},#{position},#{birth})
+		]]>
+	</insert>
+	
+	<update id="modifyEmployee" parameterType="com.java.vo.EmployeesVO">
+		<![CDATA[
+		UPDATE employees
+		   SET em_name = #{name}, em_hp = #{hp}, em_address = #{address},
+		       em_hire_date = #{hireDate}, te_id = #{teVO.id}, em_img = #{img},
+		       em_position = #{position}, em_birth = #{birth}
+		 WHERE em_no = #{no}
+		]]>
+	</update>
+
+
+	<!-- <select id="personSelectOne" parameterType="int" resultType="com.javaex.vo.PersonVo"> <![CDATA[ SELECT id, name, hp, company FROM person WHERE id = #{personId} ORDER BY id desc ]]> </select> <insert id="personInsert" parameterType="com.javaex.vo.PersonVo"> <![CDATA[ INSERT into person VALUES(seq_person_id.nextVal, #{name}, #{hp}, #{company}) ]]> </insert> <delete id="personDelete" parameterType="int"> <![CDATA[ DELETE FROM person WHERE id = #{personId} ]]> </delete> <update id="personUpdate" 
+		parameterType="com.javaex.vo.PersonVo"> <![CDATA[ UPDATE person SET name = #{name}, hp = #{hp}, company = #{company} WHERE id = #{id} ]]> </update> -->
+
+
+
+</mapper>

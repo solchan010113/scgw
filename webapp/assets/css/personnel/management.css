@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.content {
+	padding: 30px;
+}
+
+.content .departmentBtn{
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.content .departmentBtn button.active {
+	font-weight: bold;
+	background-color:  rgb(82, 78, 252);
+	color: white;
+}
+
+.content .departmentBtn button {
+	border: 1px solid rgb(82, 78, 252);
+}
+
+
+.content .employeesList{
+	padding :30px;
+	text-align: center;
+}
+
+.content .employeesList p {
+	font-size: 23px;
+	font-weight: bold;
+}
+
+.content .employeesList {
+	border: 1px solid rgb(82, 78, 252);
+	border-radius: 5px;
+}
+
+
+.content table tr th {
+	color: white;
+	background:  rgb(82, 78, 252);
+	font-weight: bold;
+	width: 16%;
+	text-align: center;
+}
+.content table tr td {
+	vertical-align: middle;
+	text-align: center;
+	padding: 0;
+	
+}
+
+.content table tr td a {
+	text-decoration: none;
+	color: black;
+	font-weight: 800;
+}
+
+.content table tr th:nth-child(1) {
+	width: 4%;
+}
+
+.content table tr td:nth-child(1) {
+	position: relative;
+	padding-bottom: 6%;
+}
+
+
+.content table img {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 75%;
+	border-radius: 70%;
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
+
